@@ -4,7 +4,7 @@
 
 void print_gaussian_Erw_Sta (int amount_of_values, FILE * input_stream) {
 
-	double Summe, Erwartungswert, Varianz, Standartabweichung, Zwischensumme = 0, B;
+	double Summe, Erwartungswert, Varianz = 0, Standartabweichung = 0, Zwischensumme = 0, Varianz_vorher = 0;
 	int Länge = 15;
 	char Zwischenspeicher [Länge];
 	char * Stopp;
@@ -21,10 +21,11 @@ void print_gaussian_Erw_Sta (int amount_of_values, FILE * input_stream) {
 	printf ("Der Erwartungswert ist: %f\n", Erwartungswert);
 	
 	while (fgets (Zwischenspeicher, Länge, input_stream)) {
-		B = pow((strtod (Zwischenspeicher, &Stopp) - Erwartungswert), 2.0) / amount_of_values + B;
+		Varianz_vorher = (strtod (Zwischenspeicher, &Stopp)) + Varianz_vorher;
+	//	Varianz_vorher = (pow((strtod (Zwischenspeicher, &Stopp) - Erwartungswert), 2.0)) + Varianz_vorher;
 	}
 
-	Varianz = B;
+	Varianz = Varianz_vorher / amount_of_values;
 	printf ("Die Varianz ist: %f\n", Varianz);
 
 	Standartabweichung = sqrt (Varianz);

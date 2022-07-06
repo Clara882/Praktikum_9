@@ -8,13 +8,13 @@
 int expected_value;
 int std_deviation;
 int amount_of_values;
-int i;
 int option;
+int amount_of_values = 100;
 
-void help (void) {
+void help(void) {
 	printf("Version 1.0\n");
 	printf("Autoren: Clara Stute, Islam Ider\n");
-	printf("\n");
+	printf("Dieses Programm\n");
 	printf("Optionen:\n");
 	printf("-h Help\n");
 }
@@ -30,6 +30,11 @@ int main (int argc, char * argv[]) {
 
 	FILE * input_stream;
 	input_stream = fopen ("output_stream.txt", "r");
+
+	if (NULL == input_stream) {
+		printf ("Error! Datei output_stream.txt nicht gefunden\n");
+		exit (2);
+	}
 
 	print_gaussian_Erw_Sta (amount_of_values, input_stream);
 
