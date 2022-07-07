@@ -21,8 +21,7 @@ void print_gaussian_Erw_Sta (int amount_of_values, FILE * input_stream) {
 	printf ("Der Erwartungswert ist: %f\n", Erwartungswert);
 	
 	while (fgets (Zwischenspeicher, Länge, input_stream)) {
-		Varianz_vorher = (strtod (Zwischenspeicher, &Stopp)) + Varianz_vorher;
-	//	Varianz_vorher = (pow((strtod (Zwischenspeicher, &Stopp) - Erwartungswert), 2.0)) + Varianz_vorher;
+		Varianz_vorher = (pow((strtod (Zwischenspeicher, &Stopp) - Erwartungswert), 2.0)) + Varianz_vorher;
 	}
 
 	Varianz = Varianz_vorher / amount_of_values;
